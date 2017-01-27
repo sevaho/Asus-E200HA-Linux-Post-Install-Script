@@ -17,13 +17,17 @@ sudo apt-get install dkms -y
 sudo ./dkms-add.sh
 
 #To make tap on click work and 2 finger tap right click
-sudo apt install synclient
+sudo apt-get install synclient
 
 #Brightness shortcut keys
-sudo apt install xdotool
+sudo apt-get install xdotool
 #key bind this: xdotool key XF86MonBrightnessUp
 #key bind this: xdotool key XF86MonBrightnessDown
 
+#Change fstab a little bit for better eMMC support, eMMC Conservation settings
+sed -i -e 's/errors=remount-ro 0/discard,noatime,errors=remount-ro 0/g' /etc/fstab
+
+echo "key bind brightness"
 echo "It's normal if Trackpad stops working now, system will reboot in 15 seconds, trackpad should work once rebooted"
 sleep 15 #wait 15 seconds
 sudo reboot now #Reboot to reenable Trackpad
